@@ -28,7 +28,7 @@ def load_data(ruta):
     
 
 # Cargar datos
-data = load_data('G:/AWS/datos_energia.csv')
+data = load_data('datos_energia.csv')
 
 # Graficar serie
 def plot_series(data, initial_date, proy):
