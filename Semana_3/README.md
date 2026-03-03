@@ -181,7 +181,7 @@ Para este sistema es necesario aplicar una combinacion diferentes de enfoques pa
     - Ejemplo: Ajustar un modelo que pierde precision tras un cambio en la fuente de datos.
 
 ### 3.7 Diagrama del Ciclo de Vida Aplicado
-![Diagrama_CRISP_SCRUM](/Diagramas/diagrama_crisp_scrum.png)
+![alt text](image.png)
 
 ---
 
