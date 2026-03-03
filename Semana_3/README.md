@@ -72,13 +72,13 @@ La metodología CRISP-DM complementa este enfoque al estructurar el ciclo de vid
     - **Scrum:** Permite ver resultados de forma temprana, lo que ayuda a definir mejor los requisitos con el cliente y accionar rápidamente cualquier corrección.
     - **CRISP-DM:** La **fase de Comprensión** de los Datos se integra en los primeros sprints, permitiendo identificar problemas de calidad y ajustar el backlog con base en hallazgos iniciales.
 * **Riesgos:**
-- Riesgo: Descubrir a mitad de un ciclo que los datos esten corruptos o sean inaccesibles.
-    - **Scrum:** Uso de **Spikes** (tareas de investigación con tiempo limitado) para reducir incertidumbre y revisar fuentes de datos antes de comprometerse a construir un tablero.
-    - **CRISP-DM:** La fase de **Preparación de los Datos** asegura que los datasets estén limpios y listos antes de pasar al modelado.
+    - Riesgo: Descubrir a mitad de un ciclo que los datos esten corruptos o sean inaccesibles.
+        - **Scrum:** Uso de **Spikes** (tareas de investigación con tiempo limitado) para reducir incertidumbre y revisar fuentes de datos antes de comprometerse a construir un tablero.
+        - **CRISP-DM:** La fase de **Preparación de los Datos** asegura que los datasets estén limpios y listos antes de pasar al modelado.
 
-- Riesgo: Dar prioridad a otros aspectos y descuidar los **Pipeline de Datos** del Sistema.
-    -**Scrum:** Incluir criterios de calidad de datos y documentación técnica en la **Definition of Done (DoD)** de cada incremento.
-    -**CRISP-DM:** La fase de **Despliegue** contempla la implementación de pipelines robustos y su monitoreo continuo.
+    - Riesgo: Dar prioridad a otros aspectos y descuidar los **Pipeline de Datos** del Sistema.
+        - **Scrum:** Incluir criterios de calidad de datos y documentación técnica en la **Definition of Done (DoD)** de cada incremento.
+        - **CRISP-DM:** La fase de **Despliegue** contempla la implementación de pipelines robustos y su monitoreo continuo.
 
 * **Tamaño del equipo:** Se requiere un grupo multidisciplinario no mayor a 9 personas y que incluya roles como Ingeniero de Datos, Científico de Datos y Desarrolladores de BI.
     - **Scrum:** Bajo el marco de Scrum se fomentará la **interfuncionalidad**, lo que permite que el equipo esté al tanto de cada avance y pueda asumir tareas de apoyo para evitar cuellos de botella si algún integrante se encuentra saturado.
