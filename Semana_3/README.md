@@ -17,7 +17,7 @@ Para resolver esto, se propone una arquitectura nativa en la nube utilizando **G
 
 ---
 
-## Parte 1: Análisis Comparativo (30%)
+## Parte 1: Análisis Comparativo
 
 A continuación, se describen 4 modelos de ciclo de vida evaluando su viabilidad teórica para proyectos de software y datos:
 
@@ -58,7 +58,7 @@ A continuación, se describen 4 modelos de ciclo de vida evaluando su viabilidad
 
 ---
 
-## Parte 2: Selección y Justificación (20%)
+## Parte 2: Selección y Justificación
 
 ### 2.1 Modelo Seleccionado
 **Modelo elegido:** CRISP-DM con SCRUM
@@ -94,7 +94,7 @@ La metodología CRISP-DM complementa este enfoque al estructurar el ciclo de vid
 
 ---
 
-## Parte 3: Diseño del Modelo Aplicado (30%)
+## Parte 3: Diseño del Modelo Aplicado
 
 ### 3.1 Fases del Modelo Adaptado al Proyecto
 
@@ -185,7 +185,7 @@ Para este sistema es necesario aplicar una combinacion diferentes de enfoques pa
 
 ---
 
-## Parte 4: Simulación Ejecutiva (20%)
+## Parte 4: Simulación Ejecutiva
 
 #### 4.1 Estimación de Alto Nivel
 * **Esfuerzo estimado:** 2,000 horas.
