@@ -215,15 +215,3 @@ Para este sistema es necesario aplicar una combinacion diferentes de enfoques pa
 | **Cambios en las fuentes de origen (Schema Drift)** | Alta | Alto | Enviar mensajes malformados a una cola de errores (Dead-Letter Queue) en Pub/Sub para no detener el pipeline principal. |
 
 ---
-
-## 5. Notas para la Presentación Ejecutiva (Anexo)
-> *Recuerda que debes preparar una presentación de 15 minutos.*
-* **Diapositiva 1-2:** Contexto y problema.
-* **Diapositiva 3:** Matriz resumen de por qué se eligió el modelo X.
-* **Diapositiva 4:** El Diagrama de cómo se ve el SDLC aplicado al proyecto de datos.
-* **Diapositiva 5:** Roadmap e hitos (Línea de tiempo visual).
-* **Diapositiva 6:** Principales riesgos.
-* **Diapositiva 7:** Conclusiones (Cómo este ciclo asegura el éxito de la analítica empresarial).
-
----
-*(Fin del documento)*
