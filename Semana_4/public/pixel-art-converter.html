@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIXL // Image to Pixel Art</title>
+  <!-- Google Fonts declared here so the CSP font-src directive covers them -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">PIXL</div>
+      <div class="tagline">// image to pixel art converter<div class="cursor-blink"></div></div>
+    </div>
+    <div class="status-bar">
+      <div class="status-item">SYS <span>READY</span></div>
+      <div class="status-item">MEM <span id="memStat">--</span></div>
+      <div class="status-item">MODE <span id="modeStat">IDLE</span></div>
+      <div class="status-item">FILE <span id="fileStat">none</span></div>
+    </div>
+  </header>
+
+  <!-- Workspace -->
+  <div class="workspace">
+
+    <!-- Input Panel -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-dot" id="inDot"></div>
+        INPUT // source image
+      </div>
+      <div class="panel-body p-12">
+        <div class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" accept="image/*">
+          <div class="drop-icon">&#11041;</div>
+          <div class="drop-text">
+            <strong>DROP IMAGE HERE</strong>
+            click to browse<br>
+            png / jpg / gif / webp / bmp
+          </div>
+        </div>
+        <div class="image-preview hidden" id="inputPreview">
+          <img id="sourceImg" alt="source">
+          <div class="img-info">
+            <div>W: <span id="imgW">--</span>px</div>
+            <div>H: <span id="imgH">--</span>px</div>
+            <div>SIZE: <span id="imgSize">--</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Panel -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-dot" id="outDot"></div>
+        OUTPUT // pixel art
+      </div>
+      <div class="panel-body p-12">
+        <div class="output-area">
+          <div class="output-placeholder" id="outputPlaceholder">
+            <span class="big-char">&#9633;</span>
+            <span class="placeholder-text">awaiting conversion...</span>
+          </div>
+          <canvas id="outputCanvas" class="hidden"></canvas>
+          <div class="processing-overlay" id="processingOverlay">
+            <div class="proc-text" id="procText">PROCESSING...</div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="control-group">
+      <label class="control-label" for="pixelSize">Pixel size</label>
+      <input type="range" id="pixelSize" min="2" max="32" value="8">
+      <span class="range-val" id="pixelSizeVal">8</span>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="palette">Palette</label>
+      <select id="palette">
+        <option value="none">FULL COLOR</option>
+        <option value="gameboy">GAME BOY</option>
+        <option value="c64">C64</option>
+        <option value="nes">NES</option>
+        <option value="mono">MONOCHROME</option>
+        <option value="amber">AMBER CRT</option>
+        <option value="phosphor">PHOSPHOR</option>
+        <option value="cga">CGA</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="colorDepth">Colors</label>
+      <input type="range" id="colorDepth" min="2" max="64" value="16">
+      <span class="range-val" id="colorDepthVal">16</span>
+    </div>
+    <label class="control-group toggle-wrap">
+      <input type="checkbox" id="ditherToggle" checked>
+      <span class="control-label cursor-ptr">Dither</span>
+    </label>
+    <div class="btn-actions">
+      <button class="btn btn-secondary" id="resetBtn" disabled>RESET</button>
+      <button class="btn btn-secondary" id="downloadBtn" disabled>SAVE PNG</button>
+      <button class="btn btn-gallery"   id="saveToGalleryBtn" disabled>+ GALLERY</button>
+      <button class="btn btn-primary"   id="convertBtn" disabled>&#9654; CONVERT</button>
+    </div>
+  </div>
+
+  <!-- Log -->
+  <div class="log-panel" id="logPanel"></div>
+
+  <!-- Gallery -->
+  <div class="gallery-section" id="gallerySection">
+    <div class="gallery-header">
+      <div class="gallery-title">
+        <span class="gallery-prefix">//</span> GALLERY
+        <span class="gallery-count" id="galleryCount">0 images</span>
+      </div>
+      <button class="btn btn-secondary btn-sm" id="refreshGalleryBtn">&#8635; REFRESH</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-empty" id="galleryEmpty">
+        <span class="gallery-empty-icon">&#9640;</span>
+        <span>no saved images yet &mdash; convert and click <strong>+ GALLERY</strong></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Hidden processing canvas -->
+<canvas id="workCanvas" class="hidden"></canvas>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+  <div class="lightbox-inner">
+    <div class="lightbox-toolbar">
+      <span class="lightbox-filename" id="lightboxFilename"></span>
+      <div class="lightbox-actions">
+        <a class="btn btn-secondary btn-sm" id="lightboxDownload" download>&#8595; DOWNLOAD</a>
+        <button class="btn btn-danger btn-sm" id="lightboxDelete">&#10005; DELETE</button>
+        <button class="btn btn-secondary btn-sm" id="lightboxClose">CLOSE</button>
+      </div>
+    </div>
+    <img class="lightbox-img" id="lightboxImg" alt="">
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
